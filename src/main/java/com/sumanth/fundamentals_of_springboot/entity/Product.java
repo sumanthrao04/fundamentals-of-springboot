@@ -1,4 +1,4 @@
-package com.sumanth.fundamentals_of_springboot.model;
+package com.sumanth.fundamentals_of_springboot.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;

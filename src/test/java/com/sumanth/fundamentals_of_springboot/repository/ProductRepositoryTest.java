@@ -3,7 +3,7 @@
 //no controller layer
 package com.sumanth.fundamentals_of_springboot.repository;
 
-import com.sumanth.fundamentals_of_springboot.model.Product;
+import com.sumanth.fundamentals_of_springboot.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
