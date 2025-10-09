@@ -1,6 +1,8 @@
-package com.sumanth.fundamentals_of_springboot.entity;
+package com.sumanth.fundamentals_of_springboot.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,8 +20,19 @@ import java.time.LocalDateTime;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "product_generator"
+    )
+
+    @SequenceGenerator(
+            name="product_generator",
+            sequenceName = "product_sequence_name",
+            allocationSize = 1
+    )
     private Long id;
+
+
 
     @Column(name="stock_keeping_unit", nullable = false)
     private String stockUnit;
@@ -29,7 +42,11 @@ public class Product {
     private BigDecimal price;
     private boolean active;
     private String imageUrl;
+
+    @CreationTimestamp
     private LocalDateTime dateCreated;
+
+    @UpdateTimestamp
     private  LocalDateTime lastUpdated;
 
     public Long getId() {
@@ -102,5 +119,20 @@ public class Product {
 
     public void setLastUpdated(LocalDateTime lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", stockUnit='" + stockUnit + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", active=" + active +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", lastUpdated=" + lastUpdated +
+                '}';
     }
 }
