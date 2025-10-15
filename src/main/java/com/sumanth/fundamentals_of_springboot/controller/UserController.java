@@ -1,5 +1,8 @@
 package com.sumanth.fundamentals_of_springboot.controller;
 
+import com.sumanth.fundamentals_of_springboot.dto.request.UserCreateRequestDto;
+import com.sumanth.fundamentals_of_springboot.dto.response.UserCreateResponseDto;
+import com.sumanth.fundamentals_of_springboot.dto.response.UserResponseDto;
 import com.sumanth.fundamentals_of_springboot.entity.User;
 import com.sumanth.fundamentals_of_springboot.service.UserService;
 import lombok.AllArgsConstructor;
@@ -19,29 +22,27 @@ public class UserController {
     //build create User REST API
 
     @PostMapping("/createUser")
-    public ResponseEntity<User> createUser( @RequestBody User user){
-        User savedUser =  userService.createUser(user);
+    public ResponseEntity<UserCreateResponseDto> createUser(@RequestBody UserCreateRequestDto user){
+        UserCreateResponseDto savedUser =  userService.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @GetMapping("{UserID}")
-    public ResponseEntity<User> getUserByID(@PathVariable("UserID") Long id){
-
-        User getuserById= userService.getUserByID(id);
+    public ResponseEntity<UserResponseDto> getUserByID(@PathVariable("UserID") Long id){
+        UserResponseDto getuserById= userService.getUserByID(id);
         return new ResponseEntity<>(getuserById,HttpStatus.OK);
     }
 
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<User>> getAllUsers(){
-        List<User> getAllUser = userService.getAllUser();
+    public ResponseEntity<List<UserResponseDto>> getAllUsers(){
+        List<UserResponseDto> getAllUser = userService.getAllUser();
         return new ResponseEntity<>(getAllUser,HttpStatus.OK);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<User> updateUser( @PathVariable("id") Long userId , @RequestBody User user){
-        user.setId(userId);
-       User updatUser=  userService.updateUser(user);
+    public ResponseEntity<UserResponseDto> updateUser( @PathVariable("id") Long userId , @RequestBody UserCreateRequestDto user){
+        UserResponseDto updatUser=  userService.updateUser(userId, user);
         return new ResponseEntity<>(updatUser,HttpStatus.OK);
     }
 

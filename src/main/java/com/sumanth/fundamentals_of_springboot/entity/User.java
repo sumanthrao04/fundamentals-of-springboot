@@ -28,4 +28,16 @@ public class User {
 
     @Column(name = "email", nullable = false,unique = true)
     private String email;
+
+    @Column(name = "insurance_provider")
+    private String insuranceProvider;
+
+    @Column(name = "aadhaar_number")
+    private String aadhaarNumber;
+
+    @Column(name = "mobile_number")
+    private String mobileNumber;
+
+    
+    
 }

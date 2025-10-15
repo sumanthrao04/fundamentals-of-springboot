@@ -1,5 +1,9 @@
 package com.sumanth.fundamentals_of_springboot.service.impl;
 
+import com.sumanth.fundamentals_of_springboot.dto.mapper.UserMapper;
+import com.sumanth.fundamentals_of_springboot.dto.request.UserCreateRequestDto;
+import com.sumanth.fundamentals_of_springboot.dto.response.UserCreateResponseDto;
+import com.sumanth.fundamentals_of_springboot.dto.response.UserResponseDto;
 import com.sumanth.fundamentals_of_springboot.entity.User;
 import com.sumanth.fundamentals_of_springboot.repository.UserRepository;
 import com.sumanth.fundamentals_of_springboot.service.UserService;
@@ -7,7 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @AllArgsConstructor
@@ -18,38 +22,34 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User createUser(User user) {
+    public UserCreateResponseDto createUser(UserCreateRequestDto user) {
       // modifying the user details as required
-      String getUserFirstName=  user.getFirstName().toUpperCase();
-      user.setFirstName(getUserFirstName);
-      String getUserLastname = user.getLastName().toUpperCase();
-      user.setLastName(getUserLastname);
-      String getUserEmail = user.getEmail().replaceAll("gmail","endava");
-      user.setEmail(getUserEmail);
-        return userRepository.save(user);
+        User saved =  userRepository.save(UserMapper.mapToEntity(user));
+        return  UserMapper.toCreateUSerResponse(saved);
     }
 
     @Override
-    public User getUserByID(Long id) {
-
-    Optional<User> optionalUser= userRepository.findById(id);
-        return optionalUser.get();
+    public UserResponseDto getUserByID(Long id) {
+    User  optionalUser =  userRepository.findById(id).orElseThrow();
+        return UserMapper.fullUserData(optionalUser);
     }
 
     @Override
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+    public List<UserResponseDto> getAllUser() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(UserMapper::fullUserData).toList() ;
     }
 
     @Override
-    public User updateUser(User user) {
-        Long userByID = user.getId();
-        user.setId(userByID);
-        user.setFirstName(user.getFirstName());
-        user.setLastName(user.getLastName());
-        user.setEmail(user.getEmail().replaceAll("gmail","endava"));
-
-        return userRepository.save(user);
+    public UserResponseDto updateUser(Long id,UserCreateRequestDto user) {
+        User updateduser = userRepository.findById(id).orElseThrow();
+        updateduser.setFirstName(user.getFirstName());
+        updateduser.setLastName(user.getLastName());
+        updateduser.setMobileNumber(user.getMobileNumber());
+        updateduser.setAadhaarNumber(user.getAadhaarNumber());
+        updateduser.setEmail(user.getEmail());
+        User saved = userRepository.save(updateduser);
+        return UserMapper.fullUserData(saved);
     }
 
     @Override
