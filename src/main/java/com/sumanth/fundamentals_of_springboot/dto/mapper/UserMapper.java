@@ -31,6 +31,7 @@ public class UserMapper {
 
     public static UserResponseDto fullUserData(User saveduser){
         UserResponseDto allSavedUser = new UserResponseDto();
+        allSavedUser.setId(saveduser.getId());
         allSavedUser.setFirstName(saveduser.getFirstName());
         allSavedUser.setLastName(saveduser.getLastName());
         allSavedUser.setEmail(saveduser.getEmail());

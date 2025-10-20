@@ -5,6 +5,7 @@ import com.sumanth.fundamentals_of_springboot.dto.request.UserCreateRequestDto;
 import com.sumanth.fundamentals_of_springboot.dto.response.UserCreateResponseDto;
 import com.sumanth.fundamentals_of_springboot.dto.response.UserResponseDto;
 import com.sumanth.fundamentals_of_springboot.entity.User;
+import com.sumanth.fundamentals_of_springboot.exception.UserNotFoundException;
 import com.sumanth.fundamentals_of_springboot.repository.UserRepository;
 import com.sumanth.fundamentals_of_springboot.service.UserService;
 import lombok.AllArgsConstructor;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto getUserByID(Long id) {
-    User  optionalUser =  userRepository.findById(id).orElseThrow();
+    User  optionalUser =  userRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
         return UserMapper.fullUserData(optionalUser);
     }
 
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto updateUser(Long id,UserCreateRequestDto user) {
-        User updateduser = userRepository.findById(id).orElseThrow();
+        User updateduser = userRepository.findById(id).orElseThrow(()->new UserNotFoundException(id));
         updateduser.setFirstName(user.getFirstName());
         updateduser.setLastName(user.getLastName());
         updateduser.setMobileNumber(user.getMobileNumber());
@@ -54,6 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUSer(Long id) {
+        if(!userRepository.existsById(id)) throw new UserNotFoundException(id);
         userRepository.deleteById(id);
     }
 
