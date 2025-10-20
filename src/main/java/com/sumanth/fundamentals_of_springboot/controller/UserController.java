@@ -3,8 +3,8 @@ package com.sumanth.fundamentals_of_springboot.controller;
 import com.sumanth.fundamentals_of_springboot.dto.request.UserCreateRequestDto;
 import com.sumanth.fundamentals_of_springboot.dto.response.UserCreateResponseDto;
 import com.sumanth.fundamentals_of_springboot.dto.response.UserResponseDto;
-import com.sumanth.fundamentals_of_springboot.entity.User;
 import com.sumanth.fundamentals_of_springboot.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class UserController {
     //build create User REST API
 
     @PostMapping("/createUser")
-    public ResponseEntity<UserCreateResponseDto> createUser(@RequestBody UserCreateRequestDto user){
+    public ResponseEntity<UserCreateResponseDto> createUser( @Valid @RequestBody UserCreateRequestDto user){
         UserCreateResponseDto savedUser =  userService.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<UserResponseDto> updateUser( @PathVariable("id") Long userId , @RequestBody UserCreateRequestDto user){
+    public ResponseEntity<UserResponseDto> updateUser( @PathVariable("id") Long userId , @Valid @RequestBody UserCreateRequestDto user){
         UserResponseDto updatUser=  userService.updateUser(userId, user);
         return new ResponseEntity<>(updatUser,HttpStatus.OK);
     }
