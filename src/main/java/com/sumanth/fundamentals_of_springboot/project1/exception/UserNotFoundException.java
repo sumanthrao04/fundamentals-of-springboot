@@ -1,4 +1,4 @@
-package com.sumanth.fundamentals_of_springboot.exception;
+package com.sumanth.fundamentals_of_springboot.project1.exception;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(Long id){

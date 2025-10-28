@@ -1,7 +1,7 @@
-package com.sumanth.fundamentals_of_springboot.controller;
+package com.sumanth.fundamentals_of_springboot.project1.controller;
 
 
-import com.sumanth.fundamentals_of_springboot.entity.Student;
+import com.sumanth.fundamentals_of_springboot.project1.entity.Student;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;

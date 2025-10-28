@@ -1,4 +1,4 @@
-package com.sumanth.fundamentals_of_springboot.entity;
+package com.sumanth.fundamentals_of_springboot.project1.entity;
 
 
 public class Student {

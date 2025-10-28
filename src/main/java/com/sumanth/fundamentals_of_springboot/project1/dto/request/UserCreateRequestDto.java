@@ -1,4 +1,4 @@
-package com.sumanth.fundamentals_of_springboot.dto.request;
+package com.sumanth.fundamentals_of_springboot.project1.dto.request;
 
 
 import io.swagger.v3.oas.annotations.media.Schema;

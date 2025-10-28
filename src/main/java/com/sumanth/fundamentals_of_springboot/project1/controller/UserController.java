@@ -1,9 +1,9 @@
-package com.sumanth.fundamentals_of_springboot.controller;
+package com.sumanth.fundamentals_of_springboot.project1.controller;
 
-import com.sumanth.fundamentals_of_springboot.dto.request.UserCreateRequestDto;
-import com.sumanth.fundamentals_of_springboot.dto.response.UserCreateResponseDto;
-import com.sumanth.fundamentals_of_springboot.dto.response.UserResponseDto;
-import com.sumanth.fundamentals_of_springboot.service.UserService;
+import com.sumanth.fundamentals_of_springboot.project1.dto.request.UserCreateRequestDto;
+import com.sumanth.fundamentals_of_springboot.project1.dto.response.UserCreateResponseDto;
+import com.sumanth.fundamentals_of_springboot.project1.dto.response.UserResponseDto;
+import com.sumanth.fundamentals_of_springboot.project1.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

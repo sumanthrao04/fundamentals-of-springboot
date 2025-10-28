@@ -1,4 +1,4 @@
-package com.sumanth.fundamentals_of_springboot.dto.response;
+package com.sumanth.fundamentals_of_springboot.project1.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

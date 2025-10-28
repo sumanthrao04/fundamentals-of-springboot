@@ -1,13 +1,13 @@
-package com.sumanth.fundamentals_of_springboot.service.impl;
+package com.sumanth.fundamentals_of_springboot.project1.service.impl;
 
-import com.sumanth.fundamentals_of_springboot.dto.mapper.UserMapper;
-import com.sumanth.fundamentals_of_springboot.dto.request.UserCreateRequestDto;
-import com.sumanth.fundamentals_of_springboot.dto.response.UserCreateResponseDto;
-import com.sumanth.fundamentals_of_springboot.dto.response.UserResponseDto;
-import com.sumanth.fundamentals_of_springboot.entity.User;
-import com.sumanth.fundamentals_of_springboot.exception.UserNotFoundException;
-import com.sumanth.fundamentals_of_springboot.repository.UserRepository;
-import com.sumanth.fundamentals_of_springboot.service.UserService;
+import com.sumanth.fundamentals_of_springboot.project1.dto.mapper.UserMapper;
+import com.sumanth.fundamentals_of_springboot.project1.dto.request.UserCreateRequestDto;
+import com.sumanth.fundamentals_of_springboot.project1.dto.response.UserCreateResponseDto;
+import com.sumanth.fundamentals_of_springboot.project1.dto.response.UserResponseDto;
+import com.sumanth.fundamentals_of_springboot.project1.entity.User;
+import com.sumanth.fundamentals_of_springboot.project1.exception.UserNotFoundException;
+import com.sumanth.fundamentals_of_springboot.project1.repository.UserRepository;
+import com.sumanth.fundamentals_of_springboot.project1.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

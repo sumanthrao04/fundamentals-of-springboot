@@ -1,9 +1,9 @@
-package com.sumanth.fundamentals_of_springboot.dto.mapper;
+package com.sumanth.fundamentals_of_springboot.project1.dto.mapper;
 
-import com.sumanth.fundamentals_of_springboot.dto.request.UserCreateRequestDto;
-import com.sumanth.fundamentals_of_springboot.dto.response.UserCreateResponseDto;
-import com.sumanth.fundamentals_of_springboot.dto.response.UserResponseDto;
-import com.sumanth.fundamentals_of_springboot.entity.User;
+import com.sumanth.fundamentals_of_springboot.project1.dto.request.UserCreateRequestDto;
+import com.sumanth.fundamentals_of_springboot.project1.dto.response.UserCreateResponseDto;
+import com.sumanth.fundamentals_of_springboot.project1.dto.response.UserResponseDto;
+import com.sumanth.fundamentals_of_springboot.project1.entity.User;
 
 public class UserMapper {
 
