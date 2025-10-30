@@ -87,4 +87,34 @@ public class TodoServiceImpl implements TodoService {
         repository.delete(repository.findById(id).get());
 
     }
+
+    @Override
+    public TodoDto completeTodo(Long id) {
+     Todo todo= repository.findById(id).get();
+        todo.setCompleted(Boolean.TRUE);
+        repository.save(todo);
+
+        Todo UpdatedTodo= repository.save(todo);
+        TodoDto savedTodoDto = new TodoDto();
+        savedTodoDto.setId(UpdatedTodo.getId());
+        savedTodoDto.setDescription(UpdatedTodo.getDescription());
+        savedTodoDto.setTitle(UpdatedTodo.getTitle());
+        savedTodoDto.setCompleted(UpdatedTodo.isCompleted());
+        return savedTodoDto;
+    }
+
+    @Override
+    public TodoDto incompleteTodo(Long id) {
+        Todo todo= repository.findById(id).get();
+        todo.setCompleted(Boolean.FALSE);
+        repository.save(todo);
+
+        Todo UpdatedTodo= repository.save(todo);
+        TodoDto savedTodoDto = new TodoDto();
+        savedTodoDto.setId(UpdatedTodo.getId());
+        savedTodoDto.setDescription(UpdatedTodo.getDescription());
+        savedTodoDto.setTitle(UpdatedTodo.getTitle());
+        savedTodoDto.setCompleted(UpdatedTodo.isCompleted());
+        return savedTodoDto;
+    }
 }

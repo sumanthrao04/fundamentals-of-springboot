@@ -37,8 +37,8 @@ public class TodoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TodoDto> updateTodo(@RequestBody TodoDto todoDto, @RequestParam Long id){
-       TodoDto updatedUser= todoService.update(todoDto,id);
-        return new ResponseEntity<>(updatedUser,HttpStatus.OK);
+       TodoDto updatedTodo= todoService.update(todoDto,id);
+        return new ResponseEntity<>(updatedTodo,HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -47,5 +47,16 @@ public class TodoController {
         return new ResponseEntity<>("The Todo is deleted",HttpStatus.OK);
     }
 
+    @PatchMapping("/{id}/complete")
+    public ResponseEntity<TodoDto> iscomplete( @PathVariable("id") Long id){
+        TodoDto updateTodo=  todoService.completeTodo(id);
+        return new ResponseEntity<>(updateTodo,HttpStatus.OK);
+    }
 
+
+    @PatchMapping("/{id}/incomplete")
+    public ResponseEntity<TodoDto> incomplete( @PathVariable("id") Long id){
+        TodoDto updateTodo=  todoService.incompleteTodo(id);
+        return new ResponseEntity<>(updateTodo,HttpStatus.OK);
+    }
 }
